@@ -24,7 +24,7 @@
         "laravel": {
             "providers": [
                 "Mfay\\AlumniTest\\ServiceProvider"
-            ],
+            ]
         }
     }
 }
