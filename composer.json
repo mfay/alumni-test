@@ -19,5 +19,12 @@
             "email": "fay.mark@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+     "extra": {
+        "laravel": {
+            "providers": [
+                "Mfay\\AlumniTest\\ServiceProvider"
+            ],
+        }
+    }
 }
