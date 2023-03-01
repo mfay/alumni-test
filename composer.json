@@ -18,5 +18,6 @@
             "name": "Mark Fay",
             "email": "fay.mark@gmail.com"
         }
-    ]
+    ],
+    "minimum-stability": "dev"
 }
