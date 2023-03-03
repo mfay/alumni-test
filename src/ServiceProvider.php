@@ -2,6 +2,7 @@
 
 namespace Mfay\AlumniTest;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 
@@ -13,10 +14,14 @@ class ServiceProvider extends BaseServiceProvider
 
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alumni');
+        $this->registerRoutes();
+    }
 
-        $this->app['router']->get('/alumni/test2', function () {
-            return "Please work";
+    protected function registerRoutes()
+    {
+        Route::group(['prefix' => 'alumni'], function () {
+            $this->loadRoutesFrom(__DIR__ . '/routes.php');
         });
     }
 }

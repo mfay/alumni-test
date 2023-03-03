@@ -1,8 +1,6 @@
 <?php
 
+use Mfay\AlumniTest\SiteController;
 use \Illuminate\Support\Facades\Route;
 
-
-Route::get('/alumni/test/', function () {
-    return 'Hello, from the Alumni Test package';
-});
+Route::get('/help', [SiteController::class, 'help'])->name('alumni.help');
