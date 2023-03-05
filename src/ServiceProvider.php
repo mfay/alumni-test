@@ -3,7 +3,6 @@
 namespace Mfay\AlumniTest;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 
@@ -18,18 +17,19 @@ class ServiceProvider extends BaseServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'alumni');
         $this->registerRoutes();
 
-        view()->creator('components.layouts.admin', function(View $view) {
+        view()->creator('components.layouts.admin', function (View $view) {
             $menu = $view->__get('menu');
-            $menu['alumni'][] = ['title' => 'Alumni Custom', 'url' => 'bob'];
-            $menu['alumni'][] = ['title' => 'Another Thing', 'url' => 'sue'];
+            // if ($menu['alumni'] === null) {
+            //     $menu['alumni'] = [];
+            // }
+            $menu['alumni'][] = ['title' => 'Alumni Owned Business', 'url' => route('alumni.admin.index')];
+            $menu['alumni'][] = ['title' => 'Alumni Help', 'url' => route('alumni.help')];
             $view->with('menu', $menu);
         });
     }
 
     protected function registerRoutes()
     {
-        Route::group(['prefix' => 'alumni'], function () {
-            $this->loadRoutesFrom(__DIR__ . '/routes.php');
-        });
+        $this->loadRoutesFrom(__DIR__ . '/routes.php');
     }
 }
