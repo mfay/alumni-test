@@ -18,10 +18,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerRoutes();
 
         view()->creator('components.layouts.admin', function (View $view) {
-            $menu = $view->__get('menu');
-            // if ($menu['alumni'] === null) {
-            //     $menu['alumni'] = [];
-            // }
+            $menu = $view->menu ?? [];
             $menu['alumni'][] = ['title' => 'Alumni Owned Business', 'url' => route('alumni.admin.index')];
             $menu['alumni'][] = ['title' => 'Alumni Help', 'url' => route('alumni.help')];
             $view->with('menu', $menu);
